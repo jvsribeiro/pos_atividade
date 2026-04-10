@@ -1,0 +1,9 @@
+USE agenda_contatos;
+
+CREATE TABLE IF NOT EXISTS contatos (
+    id INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(120) NOT NULL,
+    telefone VARCHAR(16) NOT NULL,
+    criado_em TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
