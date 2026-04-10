@@ -50,7 +50,7 @@ Sem esses dois arquivos no repositorio, o build falha de proposito para manter a
 Exemplo de build:
 
 ```bash
-docker build -t joaodockeiro/agenda-contatos:2.0 .
+docker build -t joaodockeiro/webserver-ubuntu:2.0 .
 ```
 
 ## Publicacao no Docker Hub
@@ -61,18 +61,18 @@ Padrao utilizado:
 
 Exemplo adotado:
 
-`joaodockeiro/agenda-contatos:2.0`
+`joaodockeiro/webserver-ubuntu:2.0`
 
 Comandos:
 
 ```bash
 docker login
-docker push joaodockeiro/agenda-contatos:2.0
+docker push joaodockeiro/webserver-ubuntu:2.0
 ```
 
 URL sugerida para entrega no Moodle:
 
-[https://hub.docker.com/r/joaodockeiro/agenda-contatos](https://hub.docker.com/r/joaodockeiro/agenda-contatos)
+[https://hub.docker.com/r/joaodockeiro/webserver-ubuntu](https://hub.docker.com/r/joaodockeiro/webserver-ubuntu)
 
 ## Execucao na EC2 Ubuntu
 
@@ -83,7 +83,7 @@ docker run -d \
   -p 80:80 \
   -v /home/ubuntu/mysql_data:/var/lib/mysql \
   --name meu_container \
-  joaodockeiro/agenda-contatos:2.0
+  joaodockeiro/webserver-ubuntu:2.0
 ```
 
 ## Persistencia do MySQL
@@ -117,8 +117,9 @@ Substitua pelo IP publico real da sua instancia AWS no README do Docker Hub.
 ## Resumo da solucao
 
 - imagem da Aula 07 reutilizada como base
-- instalacao de `git` e `php-mysql` na imagem derivada
+- instalacao de `git`, `php`, `libapache2-mod-php`, `php-mysql` e `mariadb-server` na imagem derivada
 - clone automatico do repositorio Git do aluno durante o build
 - copia automatica dos arquivos para `/var/www/html`
+- criacao de `index.php` apontando para `cadastro_contatos.php` para acesso direto pela raiz
 - inicializacao do MySQL com importacao do script SQL apenas quando necessario
 - persistencia aplicada somente ao diretorio de dados do MySQL

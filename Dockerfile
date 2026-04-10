@@ -8,7 +8,12 @@ ARG APP_REPO_URL=https://github.com/jvsribeiro/pos_atividade.git
 ENV APP_REPO_URL=${APP_REPO_URL}
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends git php-mysql \
+    && apt-get install -y --no-install-recommends \
+        git \
+        php \
+        libapache2-mod-php \
+        php-mysql \
+        mariadb-server \
     && rm -rf /var/lib/apt/lists/*
 
 RUN rm -f /var/www/html/index.html \
@@ -17,6 +22,7 @@ RUN rm -f /var/www/html/index.html \
     && test -f /tmp/app/banco_contatos.sql \
     && cp /tmp/app/cadastro_contatos.php /var/www/html/ \
     && cp /tmp/app/banco_contatos.sql /var/www/html/ \
+    && ln -sf /var/www/html/cadastro_contatos.php /var/www/html/index.php \
     && rm -rf /tmp/app
 
 COPY start.sh /usr/local/bin/start.sh
