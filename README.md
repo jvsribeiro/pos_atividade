@@ -15,6 +15,12 @@ Imagem utilizada como base:
 
 `joaodockeiro/webserver-ubuntu:1.0`
 
+Pull da imagem base da Aula 07:
+
+```bash
+docker pull joaodockeiro/webserver-ubuntu:1.0
+```
+
 ## Repositorio Git utilizado
 
 Repositorio publico exigido pela atividade:

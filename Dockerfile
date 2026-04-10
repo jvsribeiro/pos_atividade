@@ -1,5 +1,4 @@
-ARG BASE_IMAGE=joaodockeiro/webserver-ubuntu:1.0
-FROM ${BASE_IMAGE}
+FROM joaodockeiro/webserver-ubuntu:1.0
 
 LABEL maintainer="Joao Vitor Ribeiro"
 LABEL description="Agenda de contatos em Apache + PHP + MySQL no mesmo container, com deploy via Git e persistencia apenas do MySQL."
